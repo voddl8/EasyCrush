@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded',() =>{
     const grid = document.querySelector('.grid')
     const width :number = 8;
     const squares :HTMLDivElement[] =[];
-    let score :number = 0;
     const candyColors :string[] = [
         'url(images/block_r.png)',
         'url(images/block_o.png)',
@@ -61,7 +60,7 @@ document.addEventListener('DOMContentLoaded',() =>{
         let validMove = validMoves.includes(squareIdBeingReplaced);
 
         if(squareIdBeingReplaced && validMove){
-            squareIdBeingReplaced = 0;      //null 대신넣었음;
+            squareIdBeingReplaced = 0;     
         }else if(squareIdBeingReplaced && !validMove){
             squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced;
             squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged;
@@ -100,7 +99,6 @@ document.addEventListener('DOMContentLoaded',() =>{
             if(notValid.includes(i)) continue;
 
             if(rowOfThree.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)){
-                score +=3;
                 rowOfThree.forEach(index => {
                     squares[index].style.backgroundImage =''
                 })
@@ -116,7 +114,6 @@ document.addEventListener('DOMContentLoaded',() =>{
             const isBlank = squares[i].style.backgroundImage === '';
 
             if(ColumnOfThree.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)){
-                score +=3;
                 ColumnOfThree.forEach(index => {
                     squares[index].style.backgroundImage =''
                 })
@@ -135,7 +132,6 @@ document.addEventListener('DOMContentLoaded',() =>{
             if(notValid.includes(i)) continue;
 
             if(rowOfFour.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)){
-                score +=5;
                 rowOfFour.forEach(index => {
                     squares[index].style.backgroundImage =''
                 })
@@ -151,7 +147,6 @@ document.addEventListener('DOMContentLoaded',() =>{
             const isBlank = squares[i].style.backgroundImage === '';
 
             if(ColumnOfFour.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)){
-                score +=5;
                 ColumnOfFour.forEach(index => {
                     squares[index].style.backgroundImage =''
                 })
